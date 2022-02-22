@@ -101,7 +101,7 @@
 }
 .side-menu-bar ul li {
   transition: 0.2s;
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   color: #ffffff;
   font-size: 1.4rem;
   font-weight: 300;
@@ -115,14 +115,14 @@
   padding-right: 2rem;
 }
 .side-menu-bar ul li:hover {
-  color: #2C3995;
+  border-bottom: 1px solid #ffffff;
 }
 .side-menu-bar .active-menu {
   font-size: 1.4rem;
   background-color: #ffffff;
   font-weight: 700;
   color: #5F65E7;
-  box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.7rem 0.8rem rgba(0, 0, 0, 0.1);
   border-left: 3px solid #2C3995;
 }
 
@@ -224,10 +224,11 @@
 }
 
 .view-dash-top {
-  border-bottom: transparent 2px solid;
+  height: 5rem;
 }
 
 .user-profile-div {
+  border-bottom: #5F65E7 2px solid;
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -237,6 +238,7 @@
   padding: 0 1rem;
 }
 .user-profile-div h3 {
+  font-size: 1.6rem;
   color: #5F65E7;
   font-weight: 500;
 }

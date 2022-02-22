@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Sidemenu from "../Containers/side-menu-bar";
-import View from "../Containers/view-dash";
+import View from "./view-dash";
 
 class DashboardWrapper extends Component {
   render() {

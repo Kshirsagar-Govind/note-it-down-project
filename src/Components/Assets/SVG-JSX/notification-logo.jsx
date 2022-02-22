@@ -5,8 +5,8 @@ const HomeLogo = ({ color, size }) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="icon icon-tabler icon-tabler-bell"
-      width="18"
-      height="18"
+      width="22"
+      height="22"
       viewBox="0 0 24 24"
       stroke-width="1.0"
       stroke="#000000"

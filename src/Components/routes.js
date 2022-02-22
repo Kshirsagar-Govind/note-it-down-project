@@ -1,5 +1,5 @@
-import OverviewPage from "./Containers/overview-page";
-import ProfilePage from "./Containers/home-page";
+
+import ProfilePage from "./Pages/home-page";
 import AllNotesPage from "./Pages/all-notes";
 import TasksPage from "./Pages/tasks";
 import RemindersPage from "./Pages/reminders";

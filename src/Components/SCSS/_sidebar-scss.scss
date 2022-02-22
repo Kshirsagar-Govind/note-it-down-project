@@ -18,7 +18,7 @@
         & li{
             transition: 0.2s;
 
-            padding:0.5rem 2rem;
+            padding:1rem 2rem;
             color: $pure;
             font-size:1.4rem;
             font-weight:300;
@@ -34,8 +34,8 @@
 
         }
         & li:hover{
-            color: $secondary_color;
-            // border-bottom: 1px solid $pure;
+            // color: $secondary_color;
+            border-bottom: 1px solid $pure;
      
             
         }
@@ -45,7 +45,7 @@
         background-color: $pure;
         font-weight: 700;
         color: $primary_color;
-        box-shadow: 0 .4rem .5rem rgba(0, 0, 0, 0.2);
+        box-shadow: 0 .7rem .8rem rgba(0, 0, 0, 0.1);
         border-left: 3px solid $secondary_color;
          
     }

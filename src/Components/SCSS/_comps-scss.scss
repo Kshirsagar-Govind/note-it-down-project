@@ -13,12 +13,12 @@
     
 }
 .view-dash-top{
-    // margin:2rem 0 ;
+    height:5rem;
     
     
-    border-bottom:transparent 2px solid;
 }
 .user-profile-div{
+    border-bottom:$primary_color 2px solid;
      
  
     height: 2.5rem;
@@ -28,6 +28,7 @@
 padding:0 1rem;
 
     & h3{
+        font-size: 1.6rem;
         color: $primary_color;
         font-weight: 500;
 

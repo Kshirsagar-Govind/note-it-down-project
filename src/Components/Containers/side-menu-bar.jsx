@@ -35,90 +35,105 @@ class SideMenuBar extends Component {
           <h1>Note It Down</h1>
         </div>
         <ul>
-          <li
-            className={this.state.curr_menu == "Home" ? "active-menu" : ""}
-            onClick={() => this.setState({ curr_menu: "Home" })}
-          >
-            <logo>
-              <HomeLogo
-                color={this.state.curr_menu == "Home" ? "#5F65E7" : "#fff"}
-                size={this.state.curr_menu == "Home" ? "2" : "1.5"}
-              />
-            </logo>
-            <Link className="text-link" to="/">
+          <Link className="text-link" to="/">
+            <li
+              className={this.state.curr_menu == "Home" ? "active-menu" : ""}
+              onClick={() => this.setState({ curr_menu: "Home" })}
+            >
+              <logo>
+                <HomeLogo
+                  color={this.state.curr_menu == "Home" ? "#5F65E7" : "#fff"}
+                  size={this.state.curr_menu == "Home" ? "2" : "1.5"}
+                />
+              </logo>
               Home
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li
-            className={this.state.curr_menu == "All Notes" ? "active-menu" : ""}
-            onClick={() => this.setState({ curr_menu: "All Notes" })}
-          >
-            <logo>
-              <AllNotesLogo
-                color={this.state.curr_menu == "All Notes" ? "#5F65E7" : "#fff"}
-              />
-            </logo>
-            <Link className="text-link" to="/all-notes">
+          <Link className="text-link" to="/all-notes">
+            <li
+              className={
+                this.state.curr_menu == "All Notes" ? "active-menu" : ""
+              }
+              onClick={() => this.setState({ curr_menu: "All Notes" })}
+            >
+              <logo>
+                <AllNotesLogo
+                  color={
+                    this.state.curr_menu == "All Notes" ? "#5F65E7" : "#fff"
+                  }
+                />
+              </logo>
               All Notes
-            </Link>
-          </li>
-
-          <li
-            className={this.state.curr_menu == "Tasks" ? "active-menu" : ""}
-            onClick={() => this.setState({ curr_menu: "Tasks" })}
-          >
-            <logo>
-              <TasksLogo
-                color={this.state.curr_menu == "Tasks" ? "#5F65E7" : "#fff"}
-              />
-            </logo>
-            <Link className="text-link" to="/tasks">
+            </li>
+          </Link>
+          <Link className="text-link" to="/tasks">
+            <li
+              className={this.state.curr_menu == "Tasks" ? "active-menu" : ""}
+              onClick={() => this.setState({ curr_menu: "Tasks" })}
+            >
+              <logo>
+                <TasksLogo
+                  color={this.state.curr_menu == "Tasks" ? "#5F65E7" : "#fff"}
+                />
+              </logo>
               Tasks
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li
-            className={this.state.curr_menu == "Reminders" ? "active-menu" : ""}
-            onClick={() => this.setState({ curr_menu: "Reminders" })}
-          >
-            <logo>
-              <ReminderLogo
-                color={this.state.curr_menu == "Reminders" ? "#5F65E7" : "#fff"}
-              />
-            </logo>
-            <Link className="text-link" to="/reminders">
+          <Link className="text-link" to="/reminders">
+            <li
+              className={
+                this.state.curr_menu == "Reminders" ? "active-menu" : ""
+              }
+              onClick={() => this.setState({ curr_menu: "Reminders" })}
+            >
+              <logo>
+                <ReminderLogo
+                  color={
+                    this.state.curr_menu == "Reminders" ? "#5F65E7" : "#fff"
+                  }
+                />
+              </logo>
               Reminders
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li
-            className={this.state.curr_menu == "Expenses" ? "active-menu" : ""}
-            onClick={() => this.setState({ curr_menu: "Expenses" })}
-          >
-            <logo>
-              <ExpenseLogo
-                color={this.state.curr_menu == "Expenses" ? "#5F65E7" : "#fff"}
-              />
-            </logo>
-            <Link className="text-link" to="/expenses">
+          <Link className="text-link" to="/expenses">
+            <li
+              className={
+                this.state.curr_menu == "Expenses" ? "active-menu" : ""
+              }
+              onClick={() => this.setState({ curr_menu: "Expenses" })}
+            >
+              <logo>
+                <ExpenseLogo
+                  color={
+                    this.state.curr_menu == "Expenses" ? "#5F65E7" : "#fff"
+                  }
+                />
+              </logo>
               Expenses
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li
-            className={this.state.curr_menu == "Password" ? "active-menu" : ""}
-            onClick={() => this.setState({ curr_menu: "Password" })}
-          >
-            <logo>
-              <PasswordLogo
-                color={this.state.curr_menu == "Password" ? "#5F65E7" : "#fff"}
-              />
-            </logo>
-            <Link className="text-link" to="/passwords">
+          <Link className="text-link" to="/passwords">
+            <li
+              className={
+                this.state.curr_menu == "Password" ? "active-menu" : ""
+              }
+              onClick={() => this.setState({ curr_menu: "Password" })}
+            >
+              <logo>
+                <PasswordLogo
+                  color={
+                    this.state.curr_menu == "Password" ? "#5F65E7" : "#fff"
+                  }
+                />
+              </logo>
               Password
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
       </div>
     );

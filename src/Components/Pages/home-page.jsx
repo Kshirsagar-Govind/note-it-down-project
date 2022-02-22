@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "./header";
+import Header from "../Containers/header";
 import Logo from "../Assets/SVG-JSX/home-logo";
 
 class HomePage extends Component {
