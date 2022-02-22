@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+@import './variables-scss';
+.side-menu-bar{
+    background-color: $primary_color;
+    width:20rem;
+    height: 100%;
+    & .brand-section{
+        height: 20%;
+        & h1{
+            color: $pure;
+
+        }
+    }
+    & ul{
+      
+
+        & li{
+            transition: 0.2s;
+
+            padding:0.5rem 2rem;
+            color: $pure;
+            font-size:1.4rem;
+            font-weight:300;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            // border: 2px solid;
+            & logo{
+                padding-right: 2rem;
+            }
+        border-left: 3px solid $primary_color;
+        border-bottom: 1px solid transparent;
+
+        }
+        & li:hover{
+            color: $secondary_color;
+            // border-bottom: 1px solid $pure;
+     
+            
+        }
+    }
+    & .active-menu{  
+        font-size:1.4rem;
+        background-color: $pure;
+        font-weight: 700;
+        color: $primary_color;
+        box-shadow: 0 .4rem .5rem rgba(0, 0, 0, 0.2);
+        border-left: 3px solid $secondary_color;
+         
+    }
+
+}
+ 

@@ -1,0 +1,35 @@
+@import '../SCSS/variables-scss' ;
+
+.header{
+    & .logo{
+        padding-right: 0.5rem;
+    }
+    display:flex;
+    align-items: center;
+    padding: 1rem 1rem;
+    background-color:$primary_color;
+    color:$pure;
+    box-shadow: inset 3px 0 5px rgba(0,0,0,0.2);
+    
+}
+.view-dash-top{
+    // margin:2rem 0 ;
+    
+    
+    border-bottom:transparent 2px solid;
+}
+.user-profile-div{
+     
+ 
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    width:fit-content;
+padding:0 1rem;
+
+    & h3{
+        color: $primary_color;
+        font-weight: 500;
+
+    }
+}

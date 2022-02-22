@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+$primary_color:#5F65E7;
+$secondary_color:#2C3995;
+
+
+
+$pure:#ffffff;
+$dark:#000;
+$clr_1:#F1F1F1;
+$clr_2:#F1F1F1;
+$clr_3:#FFE195;
+$clr_4:#FFC0C0;
+$clr_5:#AFFFE7;
+$clr_6:#606060;
+
+
+
+.d-flex{
+    display: flex;
+}
+
+.d-flex-center{
+    display: flex;
+align-items: center;
+}
+.just-center{
+    display: flex;
+align-items: center;
+justify-content: center;
+}
+.just-space{
+    display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.t-center{
+    text-align: center;
+}
+.head-14-regular{
+    font-size:1.4rem;
+    font-weight:300;
+}
+
+.head-14-semi{
+    font-size:1.4rem;
+    font-weight:400;
+}
+.head-14-bold{
+    font-size:1.4rem;
+    font-weight:600;
+}
+
+
+.head-16-regular{
+    font-size:1.6rem;
+    font-weight:300;
+}
+
+.head-16-semi{
+    font-size:1.6rem;
+    font-weight:400;
+}
+.head-16-bold{
+    font-size:1.6rem;
+    font-weight:600;
+}
+
+.head-18-regular{
+    font-size:1.8rem;
+    font-weight:300;
+}
+
+.head-18-semi{
+    font-size:1.8rem;
+    font-weight:400;
+}
+.head-18-bold{
+    font-size:1.8rem;
+    font-weight:600;
+}
+
+.head-24-regular{
+    font-size:2.4rem;
+    font-weight:300;
+}
+
+.head-24-semi{
+    font-size:2.4rem;
+    font-weight:400;
+}
+.head-24-bold{
+    font-size:2.4rem;
+    font-weight:600;
+}
