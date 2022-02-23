@@ -14,11 +14,54 @@ $clr_4:#FFC0C0;
 $clr_5:#AFFFE7;
 $clr_6:#606060;
 
+.color-pure{
+    color:$pure;
+}
 
+.dark-back{
+    overflow:hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color:rgba(0, 0, 0, 0.295);
+    width: 100vw;
+    height: 100vh;
+    animation: dark_back 0.1s linear;
+}
+@keyframes dark_back{
+    0%{
+        opacity: 0;
+    }
 
+    100%{
+        opacity: 1;
+    }
+}
+.back-box{
+    border-radius:1.2rem;
+    width: 4rem;
+    height: 4rem;
+background-color:$primary_color;
+// position: absolute;
+// top: 0;
+// right: 0;
+cursor: pointer;
+ 
+}
+.col-100{
+    width: 10rem;
+    display: inline-block;
+}
 .d-flex{
     display: flex;
 }
+
+.m-yy-20{
+margin-top: 2rem ;
+margin-bottom: 2rem ;
+}
+
 
 .d-flex-center{
     display: flex;

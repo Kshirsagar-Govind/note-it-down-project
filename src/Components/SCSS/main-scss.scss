@@ -3,6 +3,7 @@
 @import './sidebar-scss';
 @import './comps-scss';
 @import './variables-scss';
+@import '../Pages/SCSS/all-notes';
 
 *{
     margin:0;
@@ -31,4 +32,7 @@ html{
     font-size:inherit;
     font-weight:inherit;
     text-decoration: inherit;
+}
+textarea{
+    resize: none;
 }

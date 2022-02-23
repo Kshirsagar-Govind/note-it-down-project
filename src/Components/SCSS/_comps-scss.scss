@@ -1,5 +1,6 @@
 @import '../SCSS/variables-scss' ;
 
+ 
 .header{
     & .logo{
         padding-right: 0.5rem;
@@ -33,4 +34,96 @@ padding:0 1rem;
         font-weight: 500;
 
     }
+}
+
+.note-card-wrapper{
+    width: 25rem;
+    height:  30rem;
+    background-color:lightgreen;
+    border-radius: 1rem;
+    box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.05);
+& .note-card-header{
+    padding: 2rem;
+    & h1{
+        font-size:3.6rem;
+    }
+}
+& .note-card-note{
+    padding: 0rem 2rem;
+    & p{
+        font-size:1.6rem;
+    }
+}
+}
+.add-something-button{
+    border-radius: 1rem;
+    height: 5rem;
+    width: fit-content;
+    border:none ;
+    background-color:$primary_color;
+    padding: 2rem;
+    font-size:2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $pure;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow:0 5px 5px rgba(0, 0, 0, 0.168);
+}
+.add-something-button:hover{
+    transform: translateX(-5px);
+}
+.add-note-popup{
+    position: relative;
+    width:50%;
+    height:fit-content;
+    background-color:$pure;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding:3rem;
+    padding-bottom:5rem;
+    & .note-popup-header{
+        height: 5rem;width:100%;
+         
+    }
+
+}
+
+.input-box{
+    border:1px solid ;
+    outline:none;
+    height:4rem;
+    width:inherit;
+    padding: 1rem;
+    border-radius:0.5rem;
+    border: 2px solid $primary_color;
+}
+.input-box:focus,.input-textarea:focus{
+    filter: brightness(99%);
+}
+.input-textarea{
+    border:1px solid ;
+    outline:none;
+ 
+    width:inherit;
+    padding: 1rem;
+    border-radius:0.5rem;
+    border: 2px solid $primary_color;
+}
+.primary_button{
+    background-color:$primary_color;
+    padding:1rem 2rem;
+    width:inherit;
+    color: $pure;
+    border-radius:0.5rem;
+    transition: 0.2s; cursor:pointer;
+    border:1px solid transparent;
+
+}
+.primary_button:hover{
+    background-color:$pure;
+    border:1px solid $primary_color;
+    color: $primary_color;
+
 }
