@@ -18,7 +18,9 @@
         & .add-note-popup{
 
             & .note-popup-form{
-
+                max-height:5rem;
+                overflow:overlay;
+                border:2px solid;
                 & .input-wrapper{
                     position: relative;
                     width: 10rem;
@@ -33,12 +35,12 @@
         }
     }
 }
-.button-wrapper{
-    // width: 10rem;
+// .button-wrapper{
+//     // width: 10rem;
      
     
-    // margin: 0 3rem;
-}
+//     // margin: 0 3rem;
+// }
 .color-pick{
     width:4rem;
     height:4rem;
@@ -60,3 +62,4 @@
     border: 2px solid rgb(143, 143, 143);
 
 }
+ 

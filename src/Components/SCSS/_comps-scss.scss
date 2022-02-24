@@ -79,6 +79,7 @@ padding:0 1rem;
     bottom: 5%;
     right:  5%;
     }
+
 .add-note-popup{
     position: relative;
     width:50%;
@@ -94,7 +95,7 @@ padding:0 1rem;
     }
 
 }
-
+ 
 .input-box{
     border:1px solid ;
     outline:none;
@@ -133,6 +134,20 @@ padding:0 1rem;
 
 }
 
+.secondary_button{
+    background-color:$primary_color;
+    padding:1rem 2rem;
+    width:inherit;
+    color: $pure;
+    border-radius:0.5rem;
+    transition: 0.2s; cursor:pointer;
+    border:1px solid transparent;
+
+}
+.secondary_button:hover{
+  filter:brightness(90%);
+
+}
 .task-container{
     position:relative;
     width:100%;

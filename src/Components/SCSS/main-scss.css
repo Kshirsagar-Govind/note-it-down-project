@@ -59,6 +59,11 @@
   margin-bottom: 2rem;
 }
 
+.m-xx-20 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .none {
   display: none;
 }
@@ -231,6 +236,11 @@
 .m-yy-20 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.m-xx-20 {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .none {
@@ -460,6 +470,21 @@
   color: #5F65E7;
 }
 
+.secondary_button {
+  background-color: #5F65E7;
+  padding: 1rem 2rem;
+  width: inherit;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  transition: 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.secondary_button:hover {
+  filter: brightness(90%);
+}
+
 .task-container {
   position: relative;
   width: 100%;
@@ -524,6 +549,11 @@
 .m-yy-20 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.m-xx-20 {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .none {
@@ -627,6 +657,11 @@
   grid-template-columns: repeat(4, 1fr);
   row-gap: 6rem;
 }
+.all-notes-page .notes-section .add-note-popup .note-popup-form {
+  max-height: 5rem;
+  overflow: overlay;
+  border: 2px solid;
+}
 .all-notes-page .notes-section .add-note-popup .note-popup-form .input-wrapper {
   position: relative;
   width: 10rem;
@@ -683,6 +718,12 @@
 }
 .tasks-container .tasks-list-div {
   margin-top: 2rem;
+}
+
+.add-task-popup {
+  width: 80%;
+  height: 20vh;
+  background-color: white;
 }
 
 * {
