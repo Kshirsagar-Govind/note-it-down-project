@@ -74,6 +74,11 @@ padding:0 1rem;
 .add-something-button:hover{
     transform: translateX(-5px);
 }
+.floting-button{
+    position: fixed;
+    bottom: 5%;
+    right:  5%;
+    }
 .add-note-popup{
     position: relative;
     width:50%;
@@ -125,5 +130,27 @@ padding:0 1rem;
     background-color:$pure;
     border:1px solid $primary_color;
     color: $primary_color;
+
+}
+
+.task-container{
+    position:relative;
+    width:100%;
+    height:5rem;
+    padding:1rem 2rem;
+    margin: 1rem 0;
+    background:$pure;
+    border-radius: 1rem;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    box-shadow: 5px 4px 11px rgba(0,0,0,0.12);
+& .task-options{
+    & input{
+        height:2rem;
+        width:2rem;
+        margin:0 0.5rem;
+    }
+}
 
 }

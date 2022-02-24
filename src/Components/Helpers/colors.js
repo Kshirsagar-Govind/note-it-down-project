@@ -16,6 +16,9 @@ const Colors = [
     }, {
         option: '5',
         color: '#B3B6FD'
+    }, {
+        option: '6',
+        color: '#C3FF94'
     }
 ]
 export default Colors;

@@ -11,7 +11,7 @@ class AllNotesPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ShowAddNote: true,
+      ShowAddNote: false,
       selectedColor: "",
     };
   }
@@ -34,7 +34,6 @@ class AllNotesPage extends Component {
           callback={() => {
             this.setState({ ShowAddNote: true });
           }}
-          style={this.style}
         />
         {this.state.ShowAddNote ? (
           <div className="dark-back just-center">

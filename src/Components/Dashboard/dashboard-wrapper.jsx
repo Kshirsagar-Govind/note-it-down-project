@@ -10,7 +10,7 @@ class DashboardWrapper extends Component {
           <Sidemenu />
         </div>
 
-        <div style={{ flex: 1 }}>
+        <div style={{ backgroundColor: "#FAFAFA", flex: 1 }}>
           <View />
         </div>
       </div>

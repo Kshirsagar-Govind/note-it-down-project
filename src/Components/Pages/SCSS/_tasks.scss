@@ -1,0 +1,28 @@
+.tasks-page{
+    position: relative;
+    
+    & .tasks-section{
+        display: flex;
+        flex-direction: column;
+ width:100%;
+        padding:2rem 10rem  ;  
+ 
+         position: relative;
+        overflow: overlay;
+        height: 85vh;
+    }
+}
+.tasks-container{
+    margin-top:3rem;
+    position: relative;
+    width: 100%;
+    max-height: fit-content;
+    // background-color:rgb(255, 184, 184);
+    border-radius:1rem;
+    padding:2rem;
+    & .tasks-list-div{
+        margin-top:2rem;
+     
+        
+    }
+}
