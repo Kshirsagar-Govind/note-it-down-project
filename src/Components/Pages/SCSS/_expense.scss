@@ -1,24 +1,25 @@
 .expense-page{
     position: relative;
-
-    & .expense-section
+     
     
-    {
-        padding: 3rem;
-
+    & .expense-section{
+        position: relative;
+        overflow: overlay;
+        padding: 3rem ; 
+        height: 63rem;
         & .expense-container{
-
+        position: relative;
+            margin: 2rem 0;
             padding: 2rem;
-
             width: 100%;
             background-color: $pure;
-            // border: 2px solid $primary_color;
+            transition: 0.2s;
             border-radius:1.5rem;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.068);
 
             & .expense-div{
                 padding:    2rem;
-                
+ 
                 border-radius: 1rem;
                 margin: 1rem 0rem;
                 & p{
@@ -47,9 +48,14 @@
                 margin-bottom: 1rem;
             }
     
+        
         }
 
         
+        & .expense-container:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+        }
     }
 
 }

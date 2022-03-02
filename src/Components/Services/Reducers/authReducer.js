@@ -4,7 +4,8 @@ const initialState = {
     loggedIn: false,
     name: 'user',
     email: 'email',
-    user_id: 'id'
+    user_id: 'id',
+    reg_on: 'DD/MM/YYYY'
 }
 
 const authReducer = (state = initialState, action) => {

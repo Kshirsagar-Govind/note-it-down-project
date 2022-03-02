@@ -180,9 +180,20 @@ padding:0 1rem;
     border:1px solid transparent;
 
 }
+
+.secondary_button:disabled{
+  background-color:$clr_6;
+  padding:1rem 2rem;
+  width:inherit;
+  color: $pure;
+  border-radius:0.5rem;
+  transition: 0.2s; cursor:pointer;
+  border:1px solid transparent;
+
+}
+
 .secondary_button:hover{
   filter:brightness(90%);
-
 }
 .task-container{
     position:relative;

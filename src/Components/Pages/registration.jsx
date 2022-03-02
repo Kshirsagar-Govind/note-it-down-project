@@ -66,6 +66,7 @@ const Login = () => {
             loggedIn: true,
             name: res.data.data.name,
             email: res.data.data.email,
+            reg_on: res.data.data.reg_on,
             user_id: res.data.data.user_id,
           })
         );
@@ -119,11 +120,18 @@ const Registration = () => {
 
   const onSubmit = async (data, e) => {
     console.log(data);
+
+    const object = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      reg_on: new Date().toLocaleString(),
+    };
     e.preventDefault();
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_HOST}/register-user`,
-        data
+        object
       );
       console.log(res);
     } catch (error) {

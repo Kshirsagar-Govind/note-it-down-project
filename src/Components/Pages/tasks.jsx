@@ -35,6 +35,16 @@ class TasksPage extends Component {
     });
   };
 
+  RemoveMoreInput = () => {
+    // alert("ok");
+    let arr = [ ...this.state.addMore ];
+    arr.pop(1);
+
+    this.setState({
+      addMore: arr,
+    });
+  };
+
   render() {
     return (
       <div className="tasks-page">
@@ -92,7 +102,7 @@ class TasksPage extends Component {
 
                 <div className=" m-yy-20">
                   <label className="head-16-semi col-100" htmlFor="">
-                    Task
+                    Task 1
                   </label>
                   <span className="input-wrapper">
                     <input className="input-box head-16-semi" type="text" />
@@ -105,18 +115,38 @@ class TasksPage extends Component {
                       {" "}
                       +{" "}
                     </button>
+
+                    {this.state.addMore.length >= 1 ? (
+                      <button
+                        onClick={() => this.RemoveMoreInput()}
+                        className="secondary_button head-16-semi"
+                      >
+                        {" "}
+                        -{" "}
+                      </button>
+                    ) : (
+                      <button
+                        disabled
+                        className="secondary_button head-16-semi"
+                      >
+                        {" "}
+                        -{" "}
+                      </button>
+                    )}
                   </span>
                 </div>
-                {this.state.addMore.map(item => (
-                  <div className=" m-yy-20">
-                    <label className="head-16-semi col-100" htmlFor="">
-                      Task
-                    </label>
-                    <span className="input-wrapper">
-                      <input className="input-box head-16-semi" type="text" />
-                    </span>
-                  </div>
-                ))}
+                <div className="dynamic-input-div ">
+                  {this.state.addMore.map((item, index) => (
+                    <div className=" m-yy-20">
+                      <label className="head-16-semi col-100" htmlFor="">
+                        Task {index + 2}
+                      </label>
+                      <span className="input-wrapper">
+                        <input className="input-box head-16-semi" type="text" />
+                      </span>
+                    </div>
+                  ))}
+                </div>
                 <div className="just-space">
                   <div />
                   <span className="button-wrapper">

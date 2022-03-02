@@ -4,7 +4,7 @@
     & .tasks-section{
         display: flex;
         flex-direction: column;
- width:100%;
+    width:100%;
         padding:2rem 10rem  ;  
  
          position: relative;
@@ -30,4 +30,9 @@
     width:80%;
     height:20vh;
     background-color:white;
+}
+
+.dynamic-input-div{
+    max-height:25rem;
+    overflow: overlay;
 }
