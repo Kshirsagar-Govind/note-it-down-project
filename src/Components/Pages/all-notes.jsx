@@ -1,19 +1,72 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
+import axios from "axios";
 import Logo from "../Assets/SVG-JSX/home-logo";
 import FloatingButton from "../Containers/floating-button";
 import Header from "../Containers/header";
 import NoteCard from "../Containers/note-card";
 import CloseButton from "../Helpers/close-button";
 import Colors from "../Helpers/colors";
+import { getAllNotes, addNote } from "../Services/Actions/[ NOTES ]";
+import { SuccessNotify } from "../Helpers/popups";
+import LoaderScreen from "../Helpers/loader-screen";
+import { GetNoteId } from "../Helpers/id-generator";
+import randomstring from "randomstring";
+import { GetCurrentDate } from "../Helpers/getDate";
 
 class AllNotesPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      allNotes: [],
       ShowAddNote: false,
-      selectedColor: "",
+      selectedColor: "#F1F1F1",
+      loading: false,
+      title: "",
+      note: "",
+      color: "",
+      user_id: "owcs6k3rX8",
     };
+  }
+
+  componentDidMount() {
+    console.log(this.props);
+  }
+
+  addNote = async () => {
+    try {
+      this.setState({ ShowAddNote: false, loading: true });
+      const note = {
+        user_id: this.props.isUserValid.user_id,
+        title: this.state.title,
+        note: this.state.note,
+        note_id: (Math.random() + 1).toString(36).substring(7),
+        color: this.state.selectedColor,
+        added_on: GetCurrentDate(),
+      };
+
+      const res = await axios.post(
+        `${process.env.REACT_APP_HOST}/add-note`,
+        note
+      );
+      console.log(note);
+
+      if (res.status == 200) {
+        this.props.addNote(note);
+      }
+      this.setState({ loading: false });
+    } catch (error) {
+      this.setState({ loading: false });
+      console.log(error);
+      alert("Failed");
+    }
+  };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props !== nextProps) {
+      this.setState({ allNotes: this.props.notes });
+      return false;
+    } else return true;
   }
 
   render() {
@@ -21,16 +74,13 @@ class AllNotesPage extends Component {
       <div className="all-notes-page">
         <Header title="All Notes" />
         <div className="notes-section">
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
+          {this.props.notes.map(item => (
+            <NoteCard NoteData={item} color={item.color} />
+          ))}
         </div>
 
         <FloatingButton
-          text="Add New Note +"
+          text="+"
           callback={() => {
             this.setState({ ShowAddNote: true });
           }}
@@ -53,7 +103,11 @@ class AllNotesPage extends Component {
                     Note Name
                   </label>
                   <span className="input-wrapper">
-                    <input className="input-box head-16-semi" type="text" />
+                    <input
+                      onChange={e => this.setState({ title: e.target.value })}
+                      className="input-box head-16-semi"
+                      type="text"
+                    />
                   </span>
                 </div>
 
@@ -63,6 +117,7 @@ class AllNotesPage extends Component {
                   </label>
                   <span className="input-wrapper">
                     <textarea
+                      onChange={e => this.setState({ note: e.target.value })}
                       cols={50}
                       rows={15}
                       className="input-textarea head-16-semi"
@@ -93,17 +148,40 @@ class AllNotesPage extends Component {
                   </span>
                 </div>
               </div>
-              <span className="button-wrapper">
-                <button className="primary_button head-16-semi">
-                  Add Note
-                </button>
-              </span>
+              <div className="d-flex-center m-yy-20">
+                <label className="head-16-semi col-100" htmlFor="" />
+                <span className="button-wrapper">
+                  <button
+                    onClick={() => this.addNote()}
+                    className="primary_button head-16-semi"
+                  >
+                    Add Note
+                  </button>
+                </span>
+              </div>
             </div>
           </div>
         ) : null}
+
+        {this.state.loading ? <LoaderScreen /> : null}
       </div>
     );
   }
 }
 
-export default AllNotesPage;
+const mapStateToProps = state => {
+  return {
+    isUserValid: state.authReducer,
+    notes: state.noteReducer,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addNote: note => {
+      dispatch(addNote(note));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllNotesPage);

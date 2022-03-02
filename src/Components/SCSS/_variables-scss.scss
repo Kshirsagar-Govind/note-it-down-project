@@ -29,6 +29,19 @@ $clr_6:#606060;
     height: 100vh;
     animation: dark_back 0.1s linear;
 }
+
+.full-screen{
+    overflow:hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color:rgba(0, 0, 0, 0.295);
+    width: 100%;
+    height: 100%;
+    animation: dark_back 0.1s linear;
+}
+
 @keyframes dark_back{
     0%{
         opacity: 0;
@@ -38,19 +51,32 @@ $clr_6:#606060;
         opacity: 1;
     }
 }
+.color-primary{
+    color:$primary_color;
+}
 .back-box{
     border-radius:1.2rem;
     width: 4rem;
     height: 4rem;
-background-color:$primary_color;
-// position: absolute;
-// top: 0;
-// right: 0;
-cursor: pointer;
+    background-color:$primary_color;
+    cursor: pointer;
  
+}
+.pointer{
+    cursor: pointer;
 }
 .col-100{
     width: 10rem;
+    display: inline-block;
+}
+
+.col-200{
+    width: 20rem;
+    display: inline-block;
+}
+
+.col-300{
+    width: 30rem;
     display: inline-block;
 }
 .d-flex{
@@ -87,6 +113,23 @@ justify-content: space-between;
 .t-center{
     text-align: center;
 }
+
+
+.head-12-regular{
+    font-size:1.2rem;
+    font-weight:300;
+}
+
+.head-12-semi{
+    font-size:1.2rem;
+    font-weight:400;
+}
+.head-12-bold{
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+
 .head-14-regular{
     font-size:1.4rem;
     font-weight:300;

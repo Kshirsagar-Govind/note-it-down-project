@@ -5,7 +5,6 @@ import "../SCSS/_sidebar-scss.scss";
 import HomeLogo from "../Assets/SVG-JSX/home-logo";
 import TasksLogo from "../Assets/SVG-JSX/tasks-logo";
 import ExpenseLogo from "../Assets/SVG-JSX/expense-logo";
-import ReminderLogo from "../Assets/SVG-JSX/reminder-logo";
 import PasswordLogo from "../Assets/SVG-JSX/password-logo";
 
 import AllNotesLogo from "../Assets/SVG-JSX/all-notes-logo";
@@ -35,17 +34,17 @@ class SideMenuBar extends Component {
           <h1>Note It Down</h1>
         </div>
         <ul>
-          <Link className="text-link" to="/">
+          <Link className="text-link" to="/home">
             <li
-              className={this.state.curr_menu == "Home" ? "active-menu" : ""}
+              className={this.state.curr_menu === "Home" ? "active-menu" : ""}
               onClick={() => this.setState({ curr_menu: "Home" })}
             >
-              <logo>
+              <div className="sidemenu-logo">
                 <HomeLogo
-                  color={this.state.curr_menu == "Home" ? "#5F65E7" : "#fff"}
-                  size={this.state.curr_menu == "Home" ? "2" : "1.5"}
+                  color={this.state.curr_menu === "Home" ? "#5F65E7" : "#fff"}
+                  size={this.state.curr_menu === "Home" ? "2" : "1.5"}
                 />
-              </logo>
+              </div>
               Home
             </li>
           </Link>
@@ -53,66 +52,66 @@ class SideMenuBar extends Component {
           <Link className="text-link" to="/all-notes">
             <li
               className={
-                this.state.curr_menu == "All Notes" ? "active-menu" : ""
+                this.state.curr_menu === "All Notes" ? "active-menu" : ""
               }
               onClick={() => this.setState({ curr_menu: "All Notes" })}
             >
-              <logo>
+              <div className="sidemenu-logo">
                 <AllNotesLogo
                   color={
-                    this.state.curr_menu == "All Notes" ? "#5F65E7" : "#fff"
+                    this.state.curr_menu === "All Notes" ? "#5F65E7" : "#fff"
                   }
                 />
-              </logo>
+              </div>
               All Notes
             </li>
           </Link>
           <Link className="text-link" to="/tasks">
             <li
-              className={this.state.curr_menu == "Tasks" ? "active-menu" : ""}
+              className={this.state.curr_menu === "Tasks" ? "active-menu" : ""}
               onClick={() => this.setState({ curr_menu: "Tasks" })}
             >
-              <logo>
+              <div className="sidemenu-logo">
                 <TasksLogo
-                  color={this.state.curr_menu == "Tasks" ? "#5F65E7" : "#fff"}
+                  color={this.state.curr_menu === "Tasks" ? "#5F65E7" : "#fff"}
                 />
-              </logo>
+              </div>
               Tasks
             </li>
           </Link>
 
-          <Link className="text-link" to="/reminders">
+          {/* <Link className="text-link" to="/reminders">
             <li
               className={
                 this.state.curr_menu == "Reminders" ? "active-menu" : ""
               }
               onClick={() => this.setState({ curr_menu: "Reminders" })}
             >
-              <logo>
+              <div className="sidemenu-logo">
                 <ReminderLogo
                   color={
                     this.state.curr_menu == "Reminders" ? "#5F65E7" : "#fff"
                   }
                 />
-              </logo>
+              </div>
               Reminders
             </li>
-          </Link>
+          </Link> */}
 
           <Link className="text-link" to="/expenses">
             <li
               className={
-                this.state.curr_menu == "Expenses" ? "active-menu" : ""
+                this.state.curr_menu === "Expenses" ? "active-menu" : ""
               }
               onClick={() => this.setState({ curr_menu: "Expenses" })}
             >
-              <logo>
+              <div className="sidemenu-logo">
                 <ExpenseLogo
                   color={
-                    this.state.curr_menu == "Expenses" ? "#5F65E7" : "#fff"
+                    this.state.curr_menu === "Expenses" ? "#5F65E7" : "#fff"
                   }
                 />
-              </logo>
+              </div>
               Expenses
             </li>
           </Link>
@@ -120,17 +119,17 @@ class SideMenuBar extends Component {
           <Link className="text-link" to="/passwords">
             <li
               className={
-                this.state.curr_menu == "Password" ? "active-menu" : ""
+                this.state.curr_menu === "Password" ? "active-menu" : ""
               }
               onClick={() => this.setState({ curr_menu: "Password" })}
             >
-              <logo>
+              <div className="sidemenu-logo">
                 <PasswordLogo
                   color={
-                    this.state.curr_menu == "Password" ? "#5F65E7" : "#fff"
+                    this.state.curr_menu === "Password" ? "#5F65E7" : "#fff"
                   }
                 />
-              </logo>
+              </div>
               Password
             </li>
           </Link>

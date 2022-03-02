@@ -12,6 +12,7 @@
         height: 85vh;
     }
 }
+
 .tasks-container{
     margin-top:3rem;
     position: relative;
@@ -22,10 +23,9 @@
     padding:2rem;
     & .tasks-list-div{
         margin-top:2rem;
-     
-        
     }
 }
+
 .add-task-popup{
     width:80%;
     height:20vh;

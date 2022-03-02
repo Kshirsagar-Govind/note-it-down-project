@@ -9,7 +9,8 @@ class HomePage extends Component {
       <div>
         <Header title="Home Page" />
         <div className="" style={{ padding: "30px" }}>
-          <NoteCard />
+          {/* <NoteCard /> */}
+          <h1>HOME PAGE</h1>
         </div>
       </div>
     );

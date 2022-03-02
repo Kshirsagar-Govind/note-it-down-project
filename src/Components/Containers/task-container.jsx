@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { useEffect } from "react/cjs/react.production.min";
+import React from "react";
 import Colors from "../Helpers/colors";
 
 const TaskContainer = ({ TaskData }) => {
@@ -12,7 +11,6 @@ const TaskContainer = ({ TaskData }) => {
         <h1 className="head-18-semi">Task Name</h1>
       </div>
       <div className="task-options">
-        <input type="checkbox" />
         <input type="checkbox" />
       </div>
     </div>

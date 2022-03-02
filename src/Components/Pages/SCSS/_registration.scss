@@ -1,0 +1,35 @@
+.registration-page{
+    position: relative;
+    // background-color: red;
+    // height:100vh;
+    overflow: hidden;
+    padding: 3rem;
+    & div{
+
+        width: 100%;
+    }
+    & div>h1{
+    position: relative;
+
+        
+    }
+}
+
+.divider{
+    // height:max-content;
+    // width: 2rem;
+    background-color: red;
+    border: 2px solid red;
+}
+
+.registration-forms{
+    display: flex;
+    // background-color: rgb(136, 136, 136);
+    width: 100%;
+    align-items: baseline;
+    padding:3rem;
+}
+
+.reg-form{
+    width: 50%;
+}

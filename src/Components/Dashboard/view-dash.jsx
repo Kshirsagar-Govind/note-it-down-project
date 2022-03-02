@@ -5,10 +5,16 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NotificationLogo from "../Assets/SVG-JSX/notification-logo";
 import routes from "../routes";
-const View = () => {
+import UserLogo from "../Assets/SVG-JSX/user-logo";
+import LogoutLogo from "../Assets/SVG-JSX/logout-logo";
+const View = ({ user }) => {
+  const [ showProfile, setShowProfile ] = useState(false);
+  useEffect(() => {
+    console.log(user);
+  }, []);
   return (
     <div className="">
       <div className="view-dash-top just-space">
@@ -17,7 +23,10 @@ const View = () => {
           <span>
             <NotificationLogo />
           </span>
-          <h3> User Name</h3>
+          <h3 className="pointer" onClick={() => setShowProfile(!showProfile)}>
+            {" "}
+            {user.name}{" "}
+          </h3>
         </div>
       </div>
 
@@ -31,6 +40,25 @@ const View = () => {
           />
         ))}
       </Routes>
+
+      {showProfile ? (
+        <div className="profile-popup">
+          <ul>
+            <li>
+              <span>
+                <UserLogo color="#5F65E7" />
+              </span>
+              Profile
+            </li>
+            <li>
+              <span>
+                <LogoutLogo color="#5F65E7" />
+              </span>{" "}
+              Logout
+            </li>
+          </ul>
+        </div>
+      ) : null}
     </div>
   );
 };

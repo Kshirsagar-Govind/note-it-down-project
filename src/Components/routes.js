@@ -6,9 +6,11 @@ import RemindersPage from "./Pages/reminders";
 import PasswordsPage from "./Pages/passwords";
 import ExpensesPage from "./Pages/expenses";
 
+
 const routes = [
+
     {
-        path: "/",
+        path: "/home",
         exact: true,
         sidebar: () => <div>home!</div>,
         main: () => <ProfilePage />

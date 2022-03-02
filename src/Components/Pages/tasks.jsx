@@ -2,7 +2,6 @@ import React, { Component, useState } from "react";
 import Colors from "../Helpers/colors";
 import CloseButton from "../Helpers/close-button";
 
-import Logo from "../Assets/SVG-JSX/home-logo";
 import ArrowDown from "../Assets/SVG/arrow-down.svg";
 import FloatingButton from "../Containers/floating-button";
 import Header from "../Containers/header";
@@ -17,6 +16,14 @@ class TasksPage extends Component {
       showAddTasks: false,
     };
   }
+
+  /*
+  {
+            task_id: { type: String, default: '' },
+            task: { type: String, default: '' },
+            done: { type: Boolean, default: false },
+        }
+  */
 
   AddMoreInput = () => {
     // alert("ok");
@@ -57,6 +64,29 @@ class TasksPage extends Component {
                   </label>
                   <span className="input-wrapper">
                     <input className="input-box head-16-semi" type="text" />
+                  </span>
+                </div>
+
+                <div className="d-flex-center m-yy-20">
+                  <label className="head-16-semi col-100" htmlFor="">
+                    Color
+                  </label>
+
+                  <span className="d-flex">
+                    {Colors.map(item => (
+                      <div
+                        onClick={() =>
+                          this.setState({ selectedColor: item.color })}
+                        style={{ backgroundColor: `${item.color}` }}
+                        className={
+                          item.color === this.state.selectedColor ? (
+                            "color-pick-selected"
+                          ) : (
+                            "color-pick"
+                          )
+                        }
+                      />
+                    ))}
                   </span>
                 </div>
 
@@ -102,7 +132,7 @@ class TasksPage extends Component {
 
         <div className="floating-button">
           <FloatingButton
-            text="Add New Tasks +"
+            text="+"
             callback={() => {
               this.setState({ showAddTasks: true });
             }}
