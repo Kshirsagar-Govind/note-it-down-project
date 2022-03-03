@@ -6,10 +6,12 @@ import { isUserValid } from "../Services/Actions/[ AUTH ] userValidity";
 import { useNavigate } from "react-router-dom";
 import { getAllNotes } from "../Services/Actions/[ NOTES ]";
 import { getAllPassword } from "../Services/Actions/[ PASSWORD ]";
+
 import {
   getAllCategories,
   getAllExpenses,
 } from "../Services/Actions/[ EXPENSE ]";
+import { getAllTasks } from "../Services/Actions/[ TASKS ]";
 
 class RegistrationWrapper extends Component {
   render() {
@@ -74,6 +76,7 @@ const Login = () => {
         dispatch(getAllPassword(res.data.data.user_id));
         dispatch(getAllCategories(res.data.data.user_id));
         dispatch(getAllExpenses(res.data.data.user_id));
+        dispatch(getAllTasks(res.data.data.user_id));
       }
 
       navigate("/home");

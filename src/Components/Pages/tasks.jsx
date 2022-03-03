@@ -1,29 +1,28 @@
 import React, { Component, useState } from "react";
 import Colors from "../Helpers/colors";
 import CloseButton from "../Helpers/close-button";
+import { GetCurrentDate } from "../Helpers/getDate";
 
 import ArrowDown from "../Assets/SVG/arrow-down.svg";
 import FloatingButton from "../Containers/floating-button";
 import Header from "../Containers/header";
 import TaskContainer from "../Containers/task-container";
+import axios from "axios";
+import { connect } from "react-redux";
+import { addTask } from "../Services/Actions/[ TASKS ]";
 
 class TasksPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedColor: "",
+      selectedColor: "#F1F1F1",
       addMore: [],
+      tasks: [],
+      tasks_title: "",
+
       showAddTasks: false,
     };
   }
-
-  /*
-  {
-            task_id: { type: String, default: '' },
-            task: { type: String, default: '' },
-            done: { type: Boolean, default: false },
-        }
-  */
 
   AddMoreInput = () => {
     // alert("ok");
@@ -39,11 +38,52 @@ class TasksPage extends Component {
     // alert("ok");
     let arr = [ ...this.state.addMore ];
     arr.pop(1);
-
     this.setState({
       addMore: arr,
     });
   };
+  addTask = async () => {
+    try {
+      const divs = document.getElementsByClassName("tasks");
+      const Tasks = [];
+      for (let i = 0; i < divs.length; i++) {
+        if (divs[i].value == "") {
+          return alert("Empty Task not allowed");
+        }
+        const obj = {
+          task_id: (Math.random() + 1).toString(36).substring(7),
+          label: divs[i].name,
+          task: divs[i].value,
+          status: false,
+        };
+        Tasks.push(obj);
+      }
+      const data = {
+        user_id: this.props.isUserValid.user_id,
+        tasks_id: (Math.random() + 1).toString(36).substring(7),
+        tasks_title: this.state.tasks_title,
+        added_on: GetCurrentDate(),
+        color: this.state.selectedColor,
+        Tasks: Tasks,
+      };
+
+      const res = await axios.post(
+        `${process.env.REACT_APP_HOST}/add-tasks`,
+        data
+      );
+
+      console.log(data, res);
+      this.props.addTask(data);
+      this.setState({ showAddTasks: false });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  componentDidMount() {
+    console.log(this.props);
+    this.setState({ tasks: this.props.allTasks });
+  }
 
   render() {
     return (
@@ -52,7 +92,9 @@ class TasksPage extends Component {
 
         <div className="just-center">
           <div className="tasks-section">
-            {Colors.map(item => <TasksCard color={item.color} />)}
+            {this.props.allTasks.map(item => (
+              <TasksCard data={item} color={item.color} />
+            ))}
           </div>
         </div>
         {this.state.showAddTasks ? (
@@ -73,7 +115,13 @@ class TasksPage extends Component {
                     Tasks Title
                   </label>
                   <span className="input-wrapper">
-                    <input className="input-box head-16-semi" type="text" />
+                    <input
+                      value={this.state.tasks_title}
+                      onChange={e =>
+                        this.setState({ tasks_title: e.target.value })}
+                      className="input-box head-16-semi"
+                      type="text"
+                    />
                   </span>
                 </div>
 
@@ -105,7 +153,11 @@ class TasksPage extends Component {
                     Task 1
                   </label>
                   <span className="input-wrapper">
-                    <input className="input-box head-16-semi" type="text" />
+                    <input
+                      className="tasks input-box head-16-semi"
+                      type="text"
+                      name="task 1"
+                    />
                   </span>
                   <span className="button-wrapper">
                     <button
@@ -142,7 +194,11 @@ class TasksPage extends Component {
                         Task {index + 2}
                       </label>
                       <span className="input-wrapper">
-                        <input className="input-box head-16-semi" type="text" />
+                        <input
+                          name={`task ${index + 2}`}
+                          className="tasks input-box head-16-semi"
+                          type="text"
+                        />
                       </span>
                     </div>
                   ))}
@@ -150,7 +206,10 @@ class TasksPage extends Component {
                 <div className="just-space">
                   <div />
                   <span className="button-wrapper">
-                    <button className="primary_button head-16-semi">
+                    <button
+                      onClick={() => this.addTask()}
+                      className="primary_button head-16-semi"
+                    >
                       Add Tasks
                     </button>
                   </span>
@@ -173,26 +232,38 @@ class TasksPage extends Component {
   }
 }
 
-export default TasksPage;
-
 const TasksCard = ({ data, color }) => {
   const [ showTasks, setShowTasks ] = useState(false);
+  console.log(data);
   return (
     <div className="tasks-container" style={{ backgroundColor: `${color}` }}>
       <div
         className="task-container-title just-space"
         onClick={() => setShowTasks(!showTasks)}
       >
-        <h1 className="head-24-semi">My Task</h1>
+        <h1 className="head-24-semi">{data.tasks_title}</h1>
         <img className={showTasks ? "rot-180" : ""} src={ArrowDown} alt="" />
       </div>
       <div className={showTasks ? "tasks-list-div" : "none"}>
-        <TaskContainer />
-        <TaskContainer />
-        <TaskContainer />
-        <TaskContainer />
-        <TaskContainer />
+        {data.Tasks.map(item => <TaskContainer task={item} />)}
       </div>
     </div>
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    isUserValid: state.authReducer,
+    allTasks: state.tasksReducer,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addTask: data => {
+      dispatch(addTask(data));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TasksPage);
