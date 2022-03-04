@@ -26,6 +26,7 @@ class AllNotesPage extends Component {
       note: "",
       color: "",
       user_id: "owcs6k3rX8",
+      search: "",
     };
   }
 
@@ -73,10 +74,28 @@ class AllNotesPage extends Component {
     return (
       <div className="all-notes-page">
         <Header title="All Notes" />
+
+        <div className="search-header">
+          <input
+            className="head-14-semi input-box"
+            onChange={e => this.setState({ search: e.target.value })}
+            type="text"
+            placeholder="Search Note"
+            value={this.state.search}
+          />
+        </div>
+
         <div className="notes-section">
-          {this.props.notes.map(item => (
-            <NoteCard NoteData={item} color={item.color} />
-          ))}
+          {this.props.notes.map(
+            item =>
+              this.state.search != "" ? item.title
+                .toLowerCase()
+                .includes(this.state.search.toLowerCase()) ? (
+                <NoteCard NoteData={item} color={item.color} />
+              ) : null : (
+                <NoteCard NoteData={item} color={item.color} />
+              )
+          )}
         </div>
 
         <FloatingButton

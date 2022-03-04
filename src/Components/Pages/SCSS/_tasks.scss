@@ -4,9 +4,9 @@
     & .tasks-section{
         display: flex;
         flex-direction: column;
-    width:100%;
-        padding:2rem 10rem  ;  
- 
+        width:100%;
+        padding:2rem 6rem  ;  
+        // padding-top: 8rem;
          position: relative;
         overflow: overlay;
         height: 85vh;
@@ -21,9 +21,14 @@
     // background-color:rgb(255, 184, 184);
     border-radius:1rem;
     padding:2rem;
+    transition: 0.2s;
     & .tasks-list-div{
         margin-top:2rem;
     }
+}
+.tasks-container:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .add-task-popup{
@@ -35,4 +40,15 @@
 .dynamic-input-div{
     max-height:25rem;
     overflow: overlay;
+}
+
+.search-header{
+    position: absolute;
+   padding-top: 0.4rem;
+   padding-right: 6rem;
+    z-index: 5;
+    right:0;
+    top:0;
+     
+    
 }

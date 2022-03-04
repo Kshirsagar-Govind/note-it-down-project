@@ -25,12 +25,20 @@ html{
     width:100%;
     height:100vh;
     overflow: hidden;
+
+    & .light-mode{
+        background-color: $light_mode;
+    }
+
+    & .dark-mode{
+        background-color: $dark_mode;
+    }
+
+    
 }
  
 
-.side-menu-bar{
-    background-color: grey;
-}
+ 
  
 .text-link {
     color: inherit;

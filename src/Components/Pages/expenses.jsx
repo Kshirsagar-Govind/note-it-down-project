@@ -17,6 +17,7 @@ class ExpensesPage extends Component {
     super(props);
     this.state = {
       showAddExpense: false,
+      user_mode: "dark-mode",
       showAddCategory: false,
       allCategories: [],
       allExpenses: [],
@@ -96,7 +97,7 @@ class ExpensesPage extends Component {
           {this.state.allData.map(
             (data, index) =>
               data.length > 0 ? (
-                <div className="expense-container">
+                <div className={`expense-container ${this.state.user_mode} `}>
                   <div className="date-header">
                     <h1>{data[0].added_on.split(",")[0]} </h1>{" "}
                   </div>

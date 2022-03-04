@@ -28,7 +28,7 @@ class DashboardWrapper extends Component {
             <Sidemenu />
           </div>
 
-          <div style={{ backgroundColor: "#FAFAFA", flex: 1 }}>
+          <div className="dark-mode" style={{ flex: 1 }}>
             <View user={this.state.user_data} />
           </div>
         </div>

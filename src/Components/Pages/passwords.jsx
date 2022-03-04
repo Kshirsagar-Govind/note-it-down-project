@@ -24,6 +24,7 @@ class PasswordsPage extends Component {
     this.state = {
       showAddPassword: false,
       label: "",
+      search: "",
       password_category: "",
       password: "",
       c_password: "",
@@ -80,11 +81,28 @@ class PasswordsPage extends Component {
       <div className="passwords-page">
         <Header title="Passwords" />
 
+        <div className="search-header">
+          <input
+            className="head-14-semi input-box"
+            onChange={e => this.setState({ search: e.target.value })}
+            type="text"
+            placeholder="Search Password"
+            value={this.state.search}
+          />
+        </div>
+
         <div className="just-center">
           <div className="tasks-section">
-            {this.props.passwords.map(item => (
-              <PasswordCard data={item} Severity={item.password_category} />
-            ))}
+            {this.props.passwords.map(
+              item =>
+                this.state.search != "" ? item.label
+                  .toLowerCase()
+                  .includes(this.state.search.toLowerCase()) ? (
+                  <PasswordCard data={item} Severity={item.password_category} />
+                ) : null : (
+                  <PasswordCard data={item} Severity={item.password_category} />
+                )
+            )}
           </div>
         </div>
 

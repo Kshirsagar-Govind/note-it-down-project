@@ -19,7 +19,7 @@ class TasksPage extends Component {
       addMore: [],
       tasks: [],
       tasks_title: "",
-
+      search: "",
       showAddTasks: false,
     };
   }
@@ -81,20 +81,62 @@ class TasksPage extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
     this.setState({ tasks: this.props.allTasks });
   }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.allTasks !== prevState.tasks) {
+      return {
+        tasks: nextProps.allTasks,
+      };
+    }
+    return null; // No change to state
+  }
+
+  filter_data = value => {
+    const filtered = this.props.allTasks.filter(
+      item => item.tasks_title == value
+    );
+    this.setState({ tasks: filtered, search: value }, () => {
+      // console.log(filtered, "***************************************");
+    });
+  };
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (this.state.search != nextState.search) {
+  //     console.log(this.state.tasks, "***************************************");
+  //     return true;
+  //   } else return false;
+  // }
 
   render() {
     return (
       <div className="tasks-page">
         <Header title="Tasks" />
 
+        <div className="search-header">
+          <input
+            className="head-14-semi input-box"
+            onChange={e => this.setState({ search: e.target.value })}
+            type="text"
+            placeholder="Search Task"
+            value={this.state.search}
+          />
+        </div>
+
         <div className="just-center">
           <div className="tasks-section">
-            {this.props.allTasks.map(item => (
-              <TasksCard data={item} color={item.color} />
-            ))}
+            {this.state.tasks.map(
+              item =>
+                this.state.search !=
+                "" ? item.tasks_title
+                  .toLowerCase()
+                  .includes(this.state.search.toLowerCase()) ? (
+                  <TasksCard data={item} color={item.color} />
+                ) : null : (
+                  <TasksCard data={item} color={item.color} />
+                )
+            )}
           </div>
         </div>
         {this.state.showAddTasks ? (

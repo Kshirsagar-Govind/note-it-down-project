@@ -1,25 +1,34 @@
 .expense-page{
     position: relative;
-     
+    //  background-color: #000;
     
     & .expense-section{
         position: relative;
         overflow: overlay;
         padding: 3rem ; 
         height: 63rem;
+        & .light-mode{
+            background-color: $pure;
+            border: 2px solid transparent;
+
+        }
+        & .dark-mode{
+            background-color:$dark-mode;
+            border: 2px solid $primary_color;
+    }
         & .expense-container{
-        position: relative;
+            position: relative;
             margin: 2rem 0;
             padding: 2rem;
             width: 100%;
-            background-color: $pure;
+
             transition: 0.2s;
             border-radius:1.5rem;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.068);
-
+            
+            
             & .expense-div{
                 padding:    2rem;
- 
                 border-radius: 1rem;
                 margin: 1rem 0rem;
                 & p{
@@ -29,11 +38,15 @@
 
             & .expense-total-div{
                 padding:    2rem;
-                background-color: #fff;
                 border-radius: 1rem;
                 margin: 1rem 0rem;
-            border: 2px solid $clr_6;
+                border: 2px solid $clr_6;
 
+                background-color:$pure;
+                border: 2px solid $pure;
+            
+               
+            
             }
 
 

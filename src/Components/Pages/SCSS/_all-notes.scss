@@ -12,7 +12,7 @@
         overflow: overlay;
         height: 85vh;
         display: grid;
-        padding:3rem;
+        padding:3rem 5rem;
         grid-template-columns: repeat(4,1fr);
         row-gap: 6rem;
         & .add-note-popup{
