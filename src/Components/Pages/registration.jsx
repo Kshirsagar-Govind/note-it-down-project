@@ -70,6 +70,7 @@ const Login = () => {
             email: res.data.data.email,
             reg_on: res.data.data.reg_on,
             user_id: res.data.data.user_id,
+            app_mode: "light-mode",
           })
         );
         dispatch(getAllNotes(arr));

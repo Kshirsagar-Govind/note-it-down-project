@@ -13,12 +13,28 @@ import { connect } from "react-redux";
 class DashboardWrapper extends Component {
   constructor(props) {
     super(props);
-    this.state = { user_data: {} };
+    this.state = {
+      user_mode: "light-mode",
+      user_data: {},
+    };
   }
 
   componentDidMount() {
-    this.setState({ user_data: this.props.isUserValid }, () => {});
+    this.setState(
+      {
+        user_mode: this.props.isUserValid.app_mode,
+        user_data: this.props.isUserValid,
+      },
+      () => {}
+    );
   }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (nextProps.isUserValid.app_mode !== this.state.user_mode) {
+  //     console.log("FROM DASHBOARD -------------+++++++++++++++++++++==");
+  //     return true;
+  //   } else return false;
+  // }
 
   render() {
     return (
@@ -28,7 +44,10 @@ class DashboardWrapper extends Component {
             <Sidemenu />
           </div>
 
-          <div className="dark-mode" style={{ flex: 1 }}>
+          <div
+            className={`${this.state.user_data.app_mode}`}
+            style={{ flex: 1 }}
+          >
             <View user={this.state.user_data} />
           </div>
         </div>

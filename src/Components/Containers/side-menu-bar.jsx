@@ -7,8 +7,13 @@ import TasksLogo from "../Assets/SVG-JSX/tasks-logo";
 import ExpenseLogo from "../Assets/SVG-JSX/expense-logo";
 import PasswordLogo from "../Assets/SVG-JSX/password-logo";
 import { connect } from "react-redux";
-// import {changeMode} from '../'
+
+import {
+  changeMode,
+  isUserValid,
+} from "../Services/Actions/[ AUTH ] userValidity";
 import AllNotesLogo from "../Assets/SVG-JSX/all-notes-logo";
+import { useDispatch } from "react-redux";
 
 class SideMenuBar extends Component {
   constructor(props) {
@@ -16,7 +21,7 @@ class SideMenuBar extends Component {
     this.state = {
       curr_menu: "Home",
       menu_color: "#fff",
-      user_mode: "dark-mode",
+      user_mode: "light-mode",
       Menus: [
         "Home",
         "Profile",
@@ -28,12 +33,17 @@ class SideMenuBar extends Component {
       ],
     };
   }
+  componentDidMount() {
+    this.setState({ user_mode: this.props.isUserValid.app_mode }, () => {});
+  }
 
-  changeTheme = () => {
-    if (this.state.user_mode == "dark-mode") {
-      this.setState({ user_mode: "light-mode" });
-    } else this.setState({ user_mode: "dark-mode" });
-  };
+  changeTheme = mode => {};
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (nextProps.isUserValid.app_mode !== this.state.user_mode) {
+  //     return true;
+  //   } else return false;
+  // }
 
   render() {
     return (
@@ -166,17 +176,58 @@ class SideMenuBar extends Component {
             </li>
           </Link>
         </ul>
-        <div className="theme-button-div">
+        <ThemeChangeButton
+          user_mode={this.state.user_mode}
+          changeTheme={mode => this.setState({ user_mode: mode })}
+        />
+        {/* <div className="theme-button-div">
           <div
             onClick={() => this.changeTheme()}
             className={`theme-button ${this.state.user_mode}`}
           >
             <div className="theme-button-nob" />
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
 }
 
-export default SideMenuBar;
+const mapStateToProps = state => {
+  return {
+    isUserValid: state.authReducer,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenuBar);
+
+// export default SideMenuBar;
+
+const ThemeChangeButton = ({ user_mode, changeTheme }) => {
+  const dispatch = useDispatch();
+  const toggleTheme = () => {
+    let mode = user_mode;
+    if (mode == "dark-mode") {
+      mode = "light-mode";
+    } else mode = "dark-mode";
+    changeTheme(mode);
+    dispatch(changeMode(mode));
+  };
+
+  return (
+    <div className="theme-button-div">
+      <div
+        onClick={() => {
+          toggleTheme();
+        }}
+        className={`theme-button ${user_mode}`}
+      >
+        <div className="theme-button-nob" />
+      </div>
+    </div>
+  );
+};

@@ -287,7 +287,9 @@ const TasksCard = ({ data, color }) => {
         <img className={showTasks ? "rot-180" : ""} src={ArrowDown} alt="" />
       </div>
       <div className={showTasks ? "tasks-list-div" : "none"}>
-        {data.Tasks.map(item => <TaskContainer task={item} />)}
+        {data.Tasks.map(item => (
+          <TaskContainer id={data.tasks_id} color={data.color} task={item} />
+        ))}
       </div>
     </div>
   );

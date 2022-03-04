@@ -10,10 +10,12 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
+
     switch (action.type) {
 
         case 'CHANGE_MODE':
             state.app_mode = action.payload;
+
             return state;
 
         case 'USER_AUTHENTICATION':

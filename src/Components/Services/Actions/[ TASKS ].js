@@ -22,3 +22,12 @@ export function addTask(data) {
         payload: data,
     }
 }
+
+export function updatetTaskStatus(data) {
+
+    return {
+        type: 'UPDATE_TASK_STATUS',
+        payload: data,
+    }
+}
+

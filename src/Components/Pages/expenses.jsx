@@ -60,17 +60,23 @@ class ExpensesPage extends Component {
 
       curr_date.setDate(curr_date.getDate() - 1);
     }
-    console.log(final);
 
-    this.setState({
-      allData: final,
-      allDataTotal: final_totals,
-    });
+    this.setState(
+      {
+        allData: final,
+        allDataTotal: final_totals,
+        user_mode: this.props.isUserValid.app_mode,
+      },
+      () => {
+        console.log(this.state.user_mode, "****************************");
+      }
+    );
   };
 
   componentDidMount() {
     this.setState(
       {
+        user_mode: this.props.isUserValid.app_mode,
         allCategories: this.props.categories,
         allExpenses: this.props.expenses,
       },
@@ -86,6 +92,14 @@ class ExpensesPage extends Component {
       this.setExpense();
       return false;
     } else return true;
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps != this.props) {
+      this.setState({
+        user_mode: this.props.isUserValid.app_mode,
+      });
+    }
+    console.log(this.state.user_mode, "****************************");
   }
 
   render() {
