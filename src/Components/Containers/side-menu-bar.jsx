@@ -65,7 +65,7 @@ class SideMenuBar extends Component {
             >
               <div className="sidemenu-logo">
                 <HomeLogo
-                  color={this.state.curr_menu === "Home" ? "#5F65E7" : "#fff"}
+                  color={this.state.curr_menu === "Home" ? "#fff" : "#5F65E7"}
                   size={this.state.curr_menu === "Home" ? "2" : "1.5"}
                 />
               </div>
@@ -87,7 +87,7 @@ class SideMenuBar extends Component {
               <div className="sidemenu-logo">
                 <ExpenseLogo
                   color={
-                    this.state.curr_menu === "Expenses" ? "#5F65E7" : "#fff"
+                    this.state.curr_menu === "Expenses" ? "#fff" : "#5F65E7"
                   }
                 />
               </div>
@@ -109,7 +109,7 @@ class SideMenuBar extends Component {
               <div className="sidemenu-logo">
                 <AllNotesLogo
                   color={
-                    this.state.curr_menu === "All Notes" ? "#5F65E7" : "#fff"
+                    this.state.curr_menu === "All Notes" ? "#fff" : "#5F65E7"
                   }
                 />
               </div>
@@ -129,7 +129,7 @@ class SideMenuBar extends Component {
             >
               <div className="sidemenu-logo">
                 <TasksLogo
-                  color={this.state.curr_menu === "Tasks" ? "#5F65E7" : "#fff"}
+                  color={this.state.curr_menu === "Tasks" ? "#fff" : "#5F65E7"}
                 />
               </div>
               Tasks
@@ -146,7 +146,7 @@ class SideMenuBar extends Component {
               <div className="sidemenu-logo">
                 <ReminderLogo
                   color={
-                    this.state.curr_menu == "Reminders" ? "#5F65E7" : "#fff"
+                    this.state.curr_menu == "Reminders" ? "#fff" : "#5F65E7"
                   }
                 />
               </div>
@@ -168,7 +168,7 @@ class SideMenuBar extends Component {
               <div className="sidemenu-logo">
                 <PasswordLogo
                   color={
-                    this.state.curr_menu === "Password" ? "#5F65E7" : "#fff"
+                    this.state.curr_menu === "Password" ? "#fff" : "#5F65E7"
                   }
                 />
               </div>

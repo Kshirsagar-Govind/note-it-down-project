@@ -2,18 +2,19 @@
 
 @import './variables-scss';
 .side-menu-bar{
-    background-color: $primary_color;
+    background-color: $pure;
     width:20rem;
     height: 100%;
     position: relative;
-    color:  $pure;
+    color:  $primary_color;
     & .brand-section{
         height: 20%;
         & h1{
-            color: $pure;
+            color: $primary_color;
 
         }
     }
+    box-shadow: 10px 0 10px rgba(0,0,0,0.05);
     & .theme-button-div{
         display: flex;
         justify-content: center;
@@ -21,8 +22,8 @@
         bottom:0;
         width:100%;
         padding: 2rem;
+
         & .theme-button{
-            
             width: 50%;
             border-radius: 45px;
             height:4rem;
@@ -39,74 +40,105 @@
                 width: 3rem;
                 height: 3rem;
                 margin:0 0.8rem;
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
-                transition: 0.3s;
-                
+                box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.35);
+                transition: all 0.3s;
             }
         }
+
         & .light-mode{
             background-color: $light_mode;
             & .theme-button-nob{
                 left: 0;
+                
+                
             }
              
         }
         & .dark-mode{
             background-color: $dark_mode;
             & .theme-button-nob{
+                 
                 right: 0;
+
+
             }
              
         }
         
         & .theme-button:hover>.theme-button-nob{
-            transform: translateY(-1.5px);
+            // transform: translateY(-1.5px);
+            box-shadow:   0px 4px 4px rgba(0, 0, 0, 0.2);
+
         }
     }
+
+//     @keyframes toLeft{
+//         0%{
+// transform: translateX(0%);
+//         }
+//         100%{
+//             transform: translateX(-50%);
+//         }
+
+//     }
+
+//     @keyframes toRight{
+//         0%{
+//             transform: translateX(0%);
+//                     }
+//                     100%{
+//                         transform: translateX(50%);
+//                     }
+//     }
+
     & ul{
       
 
         & li{
+            border-radius: 20px;
+            margin:0 10px;
             transition: 0.2s;
-
             padding:1rem 2rem;
-            // color: $dark_mode;
-            
             font-size:1.4rem;
             font-weight:600;
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
+            border: 2px solid transparent;
+
             // border: 2px solid;
             & .sidemenu-logo{
                 padding-right: 2rem;
             }
-            border-left: 3px solid $primary_color;
             border-bottom: 1px solid transparent;
 
         }
          
         & li:hover{
             // color: $secondary_color;
-            border-bottom: 1px solid $pure;
+            // margin:10px 10px;
+            border-left: 2px solid $primary_color;
+            border-right: 2px solid $primary_color;
      
             
         }
     }
     & .light-mode{
-        background-color: $light_mode;
-         color: $primary_color;
+        background-color: $primary_color;
+        color: $light_mode;
+        
     }
     & .dark-mode{
         background-color: $dark_mode;
          color: $primary_color;
+         
     }
     & .active-menu{  
         font-size:1.4rem;
         font-weight: 700;
       
         box-shadow: 0 .7rem .8rem rgba(0, 0, 0, 0.1);
-        border-left: 3px solid $secondary_color;
+        // border-left: 3px solid $secondary_color;
     }
 
 }

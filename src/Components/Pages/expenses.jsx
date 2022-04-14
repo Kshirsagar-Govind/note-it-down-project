@@ -93,13 +93,13 @@ class ExpensesPage extends Component {
       return false;
     } else return true;
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps != this.props) {
       this.setState({
         user_mode: this.props.isUserValid.app_mode,
       });
     }
-    console.log(this.state.user_mode, "****************************");
   }
 
   render() {
