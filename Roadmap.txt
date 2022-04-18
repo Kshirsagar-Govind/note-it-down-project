@@ -1,0 +1,18 @@
+1. My Profile Remaining
+2. Notifications Remaining
+3. Dashboard Remaining
+4. Dark Theme Remaining(Additional)
+5. Login & Sign Up Redesigning Remaining 
+
+// ABOUT THIS project
+In this Project user can add notes, tasks, expenses and passwords.
+You can give background colors to all of these. 
+It has one dashboard where you will see your monthly expense and ither overall
+important information about every options available for user.
+
+// Tech 
+1. Node js
+2. React JS
+3. React Redux
+4. SCSS
+4. MongoDB Database
