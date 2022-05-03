@@ -1,5 +1,6 @@
 import {
   BrowserRouter as Router,
+  Link,
   Route,
   Routes,
   useLocation,
@@ -44,12 +45,14 @@ const View = ({ user }) => {
       {showProfile ? (
         <div className="profile-popup">
           <ul>
-            <li>
-              <span>
-                <UserLogo color="#5F65E7" />
-              </span>
-              Profile
-            </li>
+            <Link to="/profile" className="text-link">
+              <li>
+                <span>
+                  <UserLogo color="#5F65E7" />
+                </span>
+                Profile
+              </li>
+            </Link>
             <li>
               <span>
                 <LogoutLogo color="#5F65E7" />

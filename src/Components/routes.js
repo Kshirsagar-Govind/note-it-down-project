@@ -1,10 +1,11 @@
 
-import ProfilePage from "./Pages/home-page";
+import HomePage from "./Pages/home-page";
 import AllNotesPage from "./Pages/all-notes";
 import TasksPage from "./Pages/tasks";
 import RemindersPage from "./Pages/reminders";
 import PasswordsPage from "./Pages/passwords";
 import ExpensesPage from "./Pages/expenses";
+import ProfilePage from "./Pages/profile-page";
 
 
 const routes = [
@@ -13,7 +14,7 @@ const routes = [
         path: "/home",
         exact: true,
         sidebar: () => <div>home!</div>,
-        main: () => <ProfilePage />
+        main: () => <HomePage />
     },
 
     {
@@ -58,6 +59,12 @@ const routes = [
         path: "/expenses",
         sidebar: () => <div>All Notes</div>,
         main: () => <ExpensesPage />
+    },
+
+    {
+        path: "/profile",
+        sidebar: () => <div>Profile</div>,
+        main: () => <ProfilePage />
     }
 ];
 

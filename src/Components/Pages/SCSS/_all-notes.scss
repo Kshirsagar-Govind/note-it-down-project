@@ -1,34 +1,51 @@
-.all-notes-page{
+.all-notes-page {
     position: relative;
 
-//     & .floting-button{
-// position: absolute;
-// bottom: 5%;
-// right:  5%;
-// }
-    
-    & .notes-section{
+    //     & .floting-button{
+    // position: absolute;
+    // bottom: 5%;
+    // right:  5%;
+    // }
+
+    & .table-class {
+        table {
+            // border: 2px solid;
+            width: 50rem;
+        }
+        padding: 3rem;
+        & th,
+        tr {
+            color: $primary_color;
+            text-align: left;
+            font-size: 1.8rem;
+        }
+        & th {
+            padding: 0.5rem 0;
+            margin-right: 2rem;
+        }
+    }
+
+    & .notes-section {
         position: relative;
         overflow: overlay;
         height: 85vh;
         display: grid;
-        padding:3rem 5rem;
-        grid-template-columns: repeat(4,1fr);
+        padding: 3rem 5rem;
+        grid-template-columns: repeat(4, 1fr);
         row-gap: 6rem;
-        & .add-note-popup{
-
-            & .note-popup-form{
-                max-height:5rem;
-                overflow:overlay;
-                border:2px solid;
-                & .input-wrapper{
+        & .add-note-popup {
+            & .note-popup-form {
+                max-height: 5rem;
+                overflow: overlay;
+                border: 2px solid;
+                & .input-wrapper {
                     position: relative;
                     width: 10rem;
                 }
-                & .button-wrapper{
+                & .button-wrapper {
                     // width: 10rem;
                     border: 2px solid;
-                    height:4rem;
+                    height: 4rem;
                     margin: 0 3rem;
                 }
             }
@@ -37,29 +54,26 @@
 }
 // .button-wrapper{
 //     // width: 10rem;
-     
-    
+
 //     // margin: 0 3rem;
 // }
-.color-pick{
-    width:4rem;
-    height:4rem;
+.color-pick {
+    width: 4rem;
+    height: 4rem;
     border: 2px transparent;
-    margin-right:  2rem;
-    border-radius:0.5rem;
-    
+    margin-right: 2rem;
+    border-radius: 0.5rem;
 }
-.color-pick-selected,.color-pick:hover{
-    box-shadow:0 3px 5px rgba(0, 0, 0, 0.116) ;
+.color-pick-selected,
+.color-pick:hover {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.116);
     transform: translateY(-2px);
-    width:4rem;
-    height:4rem;
+    width: 4rem;
+    height: 4rem;
     // border: 2px solid;
-    margin-right:  2rem;
-    border-radius:0.5rem;
+    margin-right: 2rem;
+    border-radius: 0.5rem;
 }
-.color-pick-selected{
+.color-pick-selected {
     border: 2px solid rgb(143, 143, 143);
-
 }
- 

@@ -12,6 +12,7 @@ import {
   getAllExpenses,
 } from "../Services/Actions/[ EXPENSE ]";
 import { getAllTasks } from "../Services/Actions/[ TASKS ]";
+import LoaderScreen from "../Containers/loader-screen";
 
 class RegistrationWrapper extends Component {
   render() {
@@ -42,6 +43,7 @@ class RegistrationWrapper extends Component {
 const Login = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [ isUserValid_, setUserValid ] = useState(false);
+  const [ loading, _setLoading ] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -49,13 +51,15 @@ const Login = () => {
     e.preventDefault();
     reset();
     try {
+      // _setLoading(true);
+      // _setLoading(false);
+
       const res = await axios.post(
         `${process.env.REACT_APP_HOST}/login-user`,
         data
       );
 
       console.log(res.data);
-
       if (res.data.status == 200) {
         setUserValid(true);
 
@@ -82,6 +86,8 @@ const Login = () => {
 
       navigate("/home");
     } catch (error) {
+      _setLoading(false);
+
       console.log(error);
     }
   };
