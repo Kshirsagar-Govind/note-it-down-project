@@ -103,7 +103,6 @@ const Login = () => {
             className="input-box-2"
           />
         </div>
-
         <div className="input-div-2 m-yy-20">
           <label htmlFor="input-label-2">Password</label>
           <input
@@ -112,7 +111,6 @@ const Login = () => {
             className="input-box-2"
           />
         </div>
-
         <div className="input-div-2 m-yy-20">
           <input
             type="submit"
@@ -120,6 +118,11 @@ const Login = () => {
             value="Login"
           />
         </div>
+        <h3>
+          Test Account
+          <br />
+          [username - test] <br /> [password - 12345]
+        </h3>
       </form>
     </div>
   );
