@@ -121,7 +121,7 @@ const Login = () => {
         <h3>
           Test Account
           <br />
-          [username - test] <br /> [password - 12345]
+          [username - test@mail.com] <br /> [password - 12345]
         </h3>
       </form>
     </div>
