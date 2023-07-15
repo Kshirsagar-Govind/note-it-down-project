@@ -41,16 +41,16 @@ class ExpensesPage extends Component {
     const final = [];
     const final_totals = [];
     while (
-      curr_date.toLocaleString().split(",")[0] !=
+      curr_date.toLocaleString().split(",")[0] >=
       this.props.isUserValid.reg_on.split(",")[0]
-    ) {
-      let temp = [];
-      let total = 0;
-      for (let j = 0; j < arr.length; j++) {
-        if (
-          arr[j].added_on.split(",")[0] ==
-          curr_date.toLocaleString().split(",")[0]
-        ) {
+      ) {
+        let temp = [];
+        let total = 0;
+        for (let j = 0; j < arr.length; j++) {
+          if (
+            arr[j].added_on.split(",")[0] ==
+            curr_date.toLocaleString().split(",")[0]
+            ) {
           temp.push(arr[j]);
           total = total + Number(arr[j].cost);
         }
@@ -60,7 +60,7 @@ class ExpensesPage extends Component {
 
       curr_date.setDate(curr_date.getDate() - 1);
     }
-
+    
     this.setState(
       {
         allData: final,
@@ -82,7 +82,6 @@ class ExpensesPage extends Component {
       },
       () => {
         this.setExpense();
-        let arr = [];
       }
     );
   }
