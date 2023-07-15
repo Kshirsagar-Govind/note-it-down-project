@@ -15,11 +15,11 @@ const authReducer = (state = initialState, action) => {
 
         case 'CHANGE_MODE':
             state.app_mode = action.payload;
-
             return state;
 
         case 'USER_AUTHENTICATION':
-            return Object.assign(state, action.payload);
+            return action.payload;
+            // return Object.assign(state, action.payload);
 
         default:
             return state;

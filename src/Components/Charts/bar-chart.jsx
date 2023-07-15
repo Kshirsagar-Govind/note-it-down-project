@@ -23,9 +23,10 @@ const ExpenseGraph = props => {
     let curr_date = new Date();
     const arr = props.expenses;
     const final = [];
+    console.log(curr_date.getMonth(),"/************** FINAL ********************",props.isUserValid.reg_on.split("/")[1]);
 
     while (
-      curr_date.getMonth() >=
+      (curr_date.getMonth()+1) >=
       Number(props.isUserValid.reg_on.toLocaleString().split("/")[1]) // false
     ) {
       let expenses = [];

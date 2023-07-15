@@ -98,16 +98,8 @@ class TasksPage extends Component {
       item => item.tasks_title == value
     );
     this.setState({ tasks: filtered, search: value }, () => {
-      // console.log(filtered, "***************************************");
     });
   };
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (this.state.search != nextState.search) {
-  //     console.log(this.state.tasks, "***************************************");
-  //     return true;
-  //   } else return false;
-  // }
 
   render() {
     return (
