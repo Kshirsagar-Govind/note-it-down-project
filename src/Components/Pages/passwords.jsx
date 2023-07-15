@@ -17,6 +17,7 @@ import {
   getAllPassword,
 } from "../Services/Actions/[ PASSWORD ]";
 import { useDispatch } from "react-redux";
+import { getAllPasswordData } from "../Services/API_CALLS/password_services";
 
 class PasswordsPage extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class PasswordsPage extends Component {
       c_password: "",
       added_on: "",
       loading: false,
-      passwordsData: "",
+      passwordsData: [],
       high_passwordsData: "",
       medium_passwordsData: "",
       low_passwordsData: "",
@@ -63,18 +64,23 @@ class PasswordsPage extends Component {
       this.setState({
         loading: false,
       });
-      console.log(data);
+      this.getPasswordsData();
     } catch (error) {
       console.log(error);
     }
   };
 
   componentDidMount() {
-    console.log(this.props);
+    this.getPasswordsData();
+  }
+  
+  getPasswordsData=async()=>{
+    const data = await getAllPasswordData()
     this.setState({
-      passwordsData: this.props.passwords,
+      passwordsData: data,
     });
   }
+
 
   render() {
     return (
@@ -93,7 +99,7 @@ class PasswordsPage extends Component {
 
         <div className="just-center">
           <div className="tasks-section">
-            {this.props.passwords.map(
+            {this.state.passwordsData.map(
               item =>
                 this.state.search != "" ? item.label
                   .toLowerCase()

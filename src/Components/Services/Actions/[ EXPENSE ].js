@@ -37,8 +37,6 @@ export const addCategory = (data) => {
 }
 
 export const addExpense = (data) => {
-
-
     return {
         type: 'ADD_EXPENSE',
         payload: data,

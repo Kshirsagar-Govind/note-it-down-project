@@ -10,6 +10,7 @@ import TaskContainer from "../Containers/task-container";
 import axios from "axios";
 import { connect } from "react-redux";
 import { addTask } from "../Services/Actions/[ TASKS ]";
+import { getAllTasks } from "../Services/API_CALLS/tasks_services";
 
 class TasksPage extends Component {
   constructor(props) {
@@ -72,26 +73,23 @@ class TasksPage extends Component {
         data
       );
 
-      console.log(data, res);
       this.props.addTask(data);
       this.setState({ showAddTasks: false });
+      this.getTasksData();
     } catch (error) {
       console.log(error);
     }
   };
 
-  componentDidMount() {
-    this.setState({ tasks: this.props.allTasks });
+  getTasksData =async()=>{
+    const data = await getAllTasks();
+    this.setState({ tasks: data });
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.allTasks !== prevState.tasks) {
-      return {
-        tasks: nextProps.allTasks,
-      };
-    }
-    return null; // No change to state
+  componentDidMount() {
+    this.getTasksData();
   }
+
 
   filter_data = value => {
     const filtered = this.props.allTasks.filter(
@@ -100,6 +98,7 @@ class TasksPage extends Component {
     this.setState({ tasks: filtered, search: value }, () => {
     });
   };
+
 
   render() {
     return (

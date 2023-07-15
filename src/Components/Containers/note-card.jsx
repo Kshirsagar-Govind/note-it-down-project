@@ -7,7 +7,7 @@ import axios from "axios";
 import LoaderScreen from "../Helpers/loader-screen";
 import LoaderLogo from "../Helpers/loader-logo";
 
-const NoteCard = ({ NoteData, color }) => {
+const NoteCard = ({ NoteData, color, reload }) => {
   const [ loading, setLoading ] = useState(false);
 
   const Style = {
@@ -29,7 +29,7 @@ const NoteCard = ({ NoteData, color }) => {
         dispatch(deleteNote(NoteData.note_id));
       }
       setLoading(false);
-      console.log(res);
+      reload();
     } catch (error) {
       setLoading(false);
       console.log(error);
