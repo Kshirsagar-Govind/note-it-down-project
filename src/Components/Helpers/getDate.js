@@ -1,5 +1,5 @@
 export const GetCurrentDate = () => {
-    const CurrDate = new Date().toLocaleString();
+    const CurrDate = new Date().toLocaleString().split(",")[0];
     return CurrDate;
 }
 

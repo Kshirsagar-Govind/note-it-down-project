@@ -31,7 +31,7 @@ class AllNotesPage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+    this.getNotesData();
   }
 
   addNote = async () => {
@@ -56,6 +56,7 @@ class AllNotesPage extends Component {
         this.props.addNote(note);
       }
       this.setState({ loading: false });
+      this.getNotesData();
     } catch (error) {
       this.setState({ loading: false });
       console.log(error);
@@ -65,9 +66,16 @@ class AllNotesPage extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props !== nextProps) {
-      this.setState({ allNotes: this.props.notes });
       return false;
     } else return true;
+  }
+
+
+  getNotesData=async()=>{
+    const data = await axios.get(
+      `${process.env.REACT_APP_HOST}/get-all-notes/${localStorage.UserId}`
+    );
+    this.setState({ allNotes: data.data.notes.Notes });
   }
 
   render() {
@@ -86,14 +94,19 @@ class AllNotesPage extends Component {
         </div>
 
         <div className="notes-section">
-          {this.props.notes.map(
+          {this.state.allNotes.map(
             item =>
               this.state.search != "" ? item.title
                 .toLowerCase()
                 .includes(this.state.search.toLowerCase()) ? (
-                <NoteCard NoteData={item} color={item.color} />
+                <NoteCard 
+                reload={this.getNotesData()}
+                NoteData={item} 
+                color={item.color} />
               ) : null : (
-                <NoteCard NoteData={item} color={item.color} />
+                <NoteCard 
+                reload={this.getNotesData()}
+                NoteData={item} color={item.color} />
               )
           )}
         </div>
@@ -191,7 +204,6 @@ class AllNotesPage extends Component {
 const mapStateToProps = state => {
   return {
     isUserValid: state.authReducer,
-    notes: state.noteReducer,
   };
 };
 

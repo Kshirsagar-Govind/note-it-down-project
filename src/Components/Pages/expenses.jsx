@@ -11,6 +11,8 @@ import { useDispatch } from "react-redux";
 import { addCategory, addExpense } from "../Services/Actions/[ EXPENSE ]";
 import { ToastContainer, toast } from "react-toastify";
 import { InfoNotify, ErrorNotify, WarningNotify } from "../Helpers/popups";
+import groupArray  from 'group-array';
+import { getAllExpenses } from "../Services/API_CALLS/expense_services";
 
 class ExpensesPage extends Component {
   constructor(props) {
@@ -35,44 +37,33 @@ class ExpensesPage extends Component {
     });
   };
 
-  setExpense = () => {
-    let curr_date = new Date();
-    const arr = this.props.expenses;
+  setExpense = async() => {
+    const arr = await getAllExpenses();
     const final = [];
     const final_totals = [];
-    while (
-      curr_date.toLocaleString().split(",")[0] >=
-      this.props.isUserValid.reg_on.split(",")[0]
-      ) {
-        let temp = [];
-        let total = 0;
-        for (let j = 0; j < arr.length; j++) {
-          if (
-            arr[j].added_on.split(",")[0] ==
-            curr_date.toLocaleString().split(",")[0]
-            ) {
-          temp.push(arr[j]);
-          total = total + Number(arr[j].cost);
-        }
-      }
+    const group = groupArray(arr, 'added_on');
+    for(const key in group){
+      let temp=[];
+      let total = 0;
+      group[key].forEach((item)=>{
+        temp.push(item);
+        total = total + Number(item.cost);
+      })
       final.push(temp.reverse());
       final_totals.push(total);
-
-      curr_date.setDate(curr_date.getDate() - 1);
     }
-    
     this.setState(
       {
-        allData: final,
+        allData: final.reverse(),
         allDataTotal: final_totals,
         user_mode: this.props.isUserValid.app_mode,
       },
       () => {
-        console.log(this.state.user_mode, "****************************");
+       
       }
     );
   };
-
+    
   componentDidMount() {
     this.setState(
       {
@@ -110,12 +101,13 @@ class ExpensesPage extends Component {
           {this.state.allData.map(
             (data, index) =>
               data.length > 0 ? (
-                <div className={`expense-container ${this.state.user_mode} `}>
+                <div key={Math.random()} className={`expense-container ${this.state.user_mode} `}>
                   <div className="date-header">
                     <h1>{data[0].added_on.split(",")[0]} </h1>{" "}
                   </div>
                   {data.map(item => (
                     <div
+                      key={Math.random()}
                       className="expense-div just-space"
                       style={{
                         backgroundColor: `${item.color}`,
@@ -265,8 +257,10 @@ export const AddExpensePopup = props => {
               Select
             </option>
 
-            {props.categories.map(item => (
+
+            {props.categories.map((item,index) => (
               <option
+                key={item.color}
                 style={{ background: `${item.color}`, padding: "5px 0" }}
                 value={item.category}
               >
@@ -379,11 +373,12 @@ export const AddCategoryPopup = props => {
           </label>
           <span className="d-flex">
             {Colors.map(
-              item =>
+              (item,index) =>
                 props.categories.find(
                   item2 => item2.color == item.color
                 ) ? null : (
                   <div
+                  key={item.color}
                     onClick={() => setSelectedColor(item.color)}
                     style={{ backgroundColor: `${item.color}` }}
                     className={
