@@ -67,6 +67,7 @@ const Login = () => {
           `${process.env.REACT_APP_HOST}/get-all-notes/${res.data.data.user_id}`
         );
         let arr = data.data.notes.Notes;
+        localStorage.setItem('UserId',res.data.data.user_id)
         dispatch(
           isUserValid({
             loggedIn: true,
