@@ -12,7 +12,7 @@ import {
   getAllExpenses,
 } from "../Services/Actions/[ EXPENSE ]";
 import { getAllTasks } from "../Services/Actions/[ TASKS ]";
-import LoaderScreen from "../Containers/loader-screen";
+import Loader from "../Helpers/loader";
 
 class RegistrationWrapper extends Component {
   render() {
@@ -41,9 +41,14 @@ class RegistrationWrapper extends Component {
 }
 
 const Login = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const [ isUserValid_, setUserValid ] = useState(false);
-  const [ loading, _setLoading ] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const [isUserValid_, setUserValid] = useState(false);
+  const [loading, _setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -51,15 +56,13 @@ const Login = () => {
     e.preventDefault();
     reset();
     try {
-      // _setLoading(true);
-      // _setLoading(false);
+      _setLoading(true);
 
       const res = await axios.post(
         `${process.env.REACT_APP_HOST}/login-user`,
         data
       );
 
-      console.log(res.data);
       if (res.data.status == 200) {
         setUserValid(true);
 
@@ -67,7 +70,7 @@ const Login = () => {
           `${process.env.REACT_APP_HOST}/get-all-notes/${res.data.data.user_id}`
         );
         let arr = data.data.notes.Notes;
-        localStorage.setItem('UserId',res.data.data.user_id)
+        localStorage.setItem("UserId", res.data.data.user_id);
         dispatch(
           isUserValid({
             loggedIn: true,
@@ -86,54 +89,69 @@ const Login = () => {
       }
 
       navigate("/home");
+      _setLoading(false);
     } catch (error) {
       _setLoading(false);
-
       console.log(error);
     }
   };
 
-  return (
-    <div className="login-section just-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="reg-form">
-        <div className="input-div-2 m-yy-20">
-          <label htmlFor="input-label-2">Username</label>
-          <input
-            {...register("email", { required: true })}
-            type="text"
-            className="input-box-2"
-          />
-        </div>
-        <div className="input-div-2 m-yy-20">
-          <label htmlFor="input-label-2">Password</label>
-          <input
-            type="text"
-            {...register("password", { required: true })}
-            className="input-box-2"
-          />
-        </div>
-        <div className="input-div-2 m-yy-20">
-          <input
-            type="submit"
-            className="head-16-semi primary_button "
-            value="Login"
-          />
-        </div>
-        <h3>
-          Test Account
-          <br />
-          [username - test@mail.com] <br /> [password - 12345]
-        </h3>
-      </form>
-    </div>
-  );
+  if (loading) {
+    return (
+      <div className=""
+      style={{width:'100%',height:'100%',display:'flex', justifyContent:'center'}}
+      >
+        <Loader />
+      </div>
+    );
+  } else {
+    return (
+      <div className="login-section just-center">
+        <form onSubmit={handleSubmit(onSubmit)} className="reg-form">
+          <div className="input-div-2 m-yy-20">
+            <label htmlFor="input-label-2">Username</label>
+            <input
+              {...register("email", { required: true })}
+              type="text"
+              className="input-box-2"
+            />
+          </div>
+          <div className="input-div-2 m-yy-20">
+            <label htmlFor="input-label-2">Password</label>
+            <input
+              type="text"
+              {...register("password", { required: true })}
+              className="input-box-2"
+            />
+          </div>
+          <div className="input-div-2 m-yy-20">
+            <input
+              type="submit"
+              className="head-16-semi primary_button "
+              value="Login"
+            />
+          </div>
+          <h3>
+            Test Account
+            <br />
+            [username - test@mail.com] <br /> [password - 12345]
+          </h3>
+        </form>
+      </div>
+    );
+  }
 };
 
 const Registration = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [loading, _setLoading] = useState(false);
 
   const onSubmit = async (data, e) => {
-    console.log(data);
+    _setLoading(true);
 
     const object = {
       name: data.name,
@@ -148,61 +166,72 @@ const Registration = () => {
         object
       );
       console.log(res);
+      _setLoading(false);
     } catch (error) {
       console.log(error);
+      _setLoading(false);
     }
   };
+  if (loading) {
+    return (
+      <div className=""
+      style={{width:'100%',height:'100%',display:'flex', justifyContent:'center'}}
+      >
+        <Loader />
+      </div>
+    );
+  } else {
+    return (
+      <div className="registration-section just-center">
+        <form className="reg-form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="input-div-2 m-yy-20">
+            <label htmlFor="input-label-2">Name</label>
+            <input
+              type="text"
+              {...register("name", { required: true })}
+              className="input-box-2"
+            />
+          </div>
 
-  return (
-    <div className="registration-section just-center">
-      <form className="reg-form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="input-div-2 m-yy-20">
-          <label htmlFor="input-label-2">Name</label>
-          <input
-            type="text"
-            {...register("name", { required: true })}
-            className="input-box-2"
-          />
-        </div>
+          <div className="input-div-2 m-yy-20">
+            <label htmlFor="input-label-2">Email</label>
+            <input
+              type="text"
+              {...register("email", { required: true })}
+              className="input-box-2"
+            />
+          </div>
 
-        <div className="input-div-2 m-yy-20">
-          <label htmlFor="input-label-2">Email</label>
-          <input
-            type="text"
-            {...register("email", { required: true })}
-            className="input-box-2"
-          />
-        </div>
+          <div className="input-div-2 m-yy-20">
+            <label htmlFor="input-label-2">Password</label>
+            <input
+              type="password"
+              {...register("password", { required: true })}
+              className="input-box-2"
+            />
+          </div>
 
-        <div className="input-div-2 m-yy-20">
-          <label htmlFor="input-label-2">Password</label>
-          <input
-            type="password"
-            {...register("password", { required: true })}
-            className="input-box-2"
-          />
-        </div>
+          <div className="input-div-2">
+            <label htmlFor="input-label-2">Confirm Password</label>
+            <input
+              type="password"
+              {...register("c_password", { required: true })}
+              className="input-box-2"
+            />
+          </div>
 
-        <div className="input-div-2">
-          <label htmlFor="input-label-2">Confirm Password</label>
-          <input
-            type="password"
-            {...register("c_password", { required: true })}
-            className="input-box-2"
-          />
-        </div>
-
-        <div className="input-div-2 submit-btn m-yy-20">
-          <input
-            type="submit"
-            className="head-16-semi primary_button"
-            // onCLick={()=>}
-            value="Register"
-          />
-        </div>
-      </form>
-    </div>
-  );
+          <div className="input-div-2 submit-btn m-yy-20">
+            <input
+              type="submit"
+              className="head-16-semi primary_button"
+              // onCLick={()=>}
+              value="Register"
+            />
+          </div>
+        </form>
+      </div>
+    );
+  }
 };
 
 export default RegistrationWrapper;
